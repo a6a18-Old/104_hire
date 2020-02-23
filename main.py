@@ -8,11 +8,14 @@ SaveDirectory = os.getcwd()
 webdriver_path = SaveDirectory + '\chromedriver.exe'
 
 
-keyword = input("想找的職業：")
+#keyword = input("想找的職業：")
 driver = webdriver.Chrome(executable_path=webdriver_path) #開啟firefox
-driver.get("https://www.104.com.tw/jobs/search/?keyword=" + keyword + "order=1&jobsource=2018indexpoc&ro=0") #前往這個網址
-
-
+#driver.get("https://www.104.com.tw/jobs/search/?keyword=" + keyword + "order=1&jobsource=2018indexpoc&ro=0") #前往這個網址
+driver.get("https://www.104.com.tw/job/6qtss?jobsource=hotjob_chr")
+sleep(4)
+soup = BeautifulSoup(driver.page_source, 'html.parser')
+tool = soup.select("a.tools.text-gray-deep-dark.d-inline-block")
+print(tool)
 # sleep(2)
 # driver.find_element_by_name("username").send_keys("itop")
 # driver.find_element_by_name("password").send_keys("litv123")
